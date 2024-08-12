@@ -1,11 +1,6 @@
 # Data Disk Configuration & Provisioning
 
-<div align="center">
-  <img src="https://regroove.ca/stellark/wp-content/uploads/sites/3/2021/02/icon_1.0.1358.2031.png" height="240" alt="azure vm logo"  />
-  <img width="72" />
-  <img src="https://imgur.com/GiupieX.png" height="240" alt="azure data disk"  />
-  <img width="72" />
-</div>
+![VMs](https://imgur.com/PSLEQ0j.png)
 
 ## Introduction
 This project delves into the configuration and provisioning of shared data disks in Azure. Azure shared data disks offer a cost-effective solution for various applications, particularly those requiring high availability, scalability, and efficient resource management. By enabling multiple virtual machines to access the same disk simultaneously, these shared disks facilitate seamless data sharing and collaboration, making them ideal for clustered applications, databases, and other critical workloads.
