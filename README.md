@@ -8,82 +8,92 @@
 </div>
 
 ## Introduction
-
-This project covers the installation and configuration process of LAMP stack collection process. This LAMP stack is comprised of four programs - Linux, Apache, MySQL and PHP, used to create and deploy a functional database application. 
+This project delves into the configuration and provisioning of shared data disks in Azure. Azure shared data disks offer a cost-effective solution for various applications, particularly those requiring high availability, scalability, and efficient resource management. By enabling multiple virtual machines to access the same disk simultaneously, these shared disks facilitate seamless data sharing and collaboration, making them ideal for clustered applications, databases, and other critical workloads.
 
 ### Components used to complete this project:
-
 - Azure
 - Microsoft Virtual Machines
 - Data Disk 
 
-## Start Section 1
+## 1. Azure Data Disk Setup
 
-We begin this project with.... 
-
-I then created inbound rules to ...
+We start by accessing our Azure account and selecting the virtual machine to which we want to create a shared data disk.
 
 ![VMs](https://imgur.com/1UN3JPM.jpg) 
 
+Navigate to the ‘Disks’ section under the settings tab of the selected virtual machine. As illustrated below, there are currently 'no data disks attached'.
 ![No data disk](https://imgur.com/ag3mxOq.jpg) 
 
-## Successful Restore Confirmation
-I was able to remote into the machine and confirm the restore machine duplication was successful.
+Next, we create a new data disk to be shared with another machine in subsequent steps. Click on ‘Create and attach a new disk’, name it, and configure the data disk settings according to your requirements.
 
 ![Create dd](https://imgur.com/TX2lJ8M.jpg) 
 
-I ran into complications when assigning a public...
+![dd config2](https://imgur.com/b4seliH.jpg) 
 
-![---](https://imgur.com/IzOSf24.jpg) 
+Our data disk is now successfully set up.
 
-![---](https://imgur.com/b4seliH.jpg) 
+![dd config](https://imgur.com/IzOSf24.jpg) 
 
-From here I was able to configure a...
+## 2. Disk Configuration in Virtual Machine
 
-![---](https://imgur.com/8zJ3rAU.jpg) 
+At this stage, we can observe that there are only two drives on our 1st machine.
 
-The IP address configuration was complete...
-![---](https://imgur.com/KpBiw51.jpg) 
+![only 2 drives](https://imgur.com/8zJ3rAU.jpg) 
 
-I then created inbound rules to ...
+Locate the disk manager dialog using the search box.
 
-![---](https://imgur.com/FP4Sb23.jpg) 
+![locate disk mngr](https://imgur.com/KpBiw51.jpg) 
 
-![---](https://imgur.com/nIxywwK.jpg)  
+Upon opening the Disk Manager, if prompted, select either GPT or MBR to initialize disk.
+Key:
+ * GPT - allows multiple partitions on disk
+ * MBR - limited partitions allowed on disk
 
-## Successful Restore Confirmation
-I was able to remote into the machine and confirm the restore machine duplication was successful.
+![disk mngr scrn](https://imgur.com/FP4Sb23.jpg) 
 
-![---](https://imgur.com/NHr7iPU.jpg)  
+Scroll to Disk 2 within the dialog box, right-click, and select ‘New Simple Volume’.
 
-I ran into complications when assigning a public...
+![disk 2 mnu](https://imgur.com/nIxywwK.jpg)  
 
-![---](https://imgur.com/N4WEGyQ.jpg) 
+![mnu box](https://imgur.com/NHr7iPU.jpg)  
 
-![---](https://imgur.com/r8buBth.jpg) 
+For this project, we will use the default settings for the new data disk. However, you can customize these settings to suit your specific requirements.
 
-From here I was able to configure a...
+![clck thru](https://imgur.com/N4WEGyQ.jpg) 
+
+![mnu fin](https://imgur.com/r8buBth.jpg) 
+
+After clicking 'Finish" we are able to see the E drive, representing our newly created data disk, which will be shared with our second machine.
 
 ![E drive appears](https://imgur.com/ECwqHPc.jpg) 
 
-The IP address configuration was complete...
-![folder created](https://imgur.com/eBdKQGs.jpg) 
+We then created a test folder within our newly configured E drive.
 
-I then created inbound rules to ...
+![flder crted](https://imgur.com/eBdKQGs.jpg) 
+
+## 3. Provisioning Data Disk Access 
+
+On our second machine, we initially do not have a data disk attached.
 
 ![no disk for ref](https://imgur.com/EXk3amS.jpg) 
 
+In the image below, we attach the data disk to provision access for the second machine.
+
 ![adding disk to ref](https://imgur.com/mcgPae6.jpg) 
 
-we were able to successfully add the E file but we are not able to few our test file 'shared drive' 
+After remoting into our second machine, we successfully added the E drive. However, we were unable to view our test ‘shared folder’.
+
 ![test file not showing](https://imgur.com/zCbwlTF.jpg) 
 
-Let's run a configuration in Azure on the shared disk to enable it's accessibility to multiple machines. Ensure all machines are off connected to the data disk and select yes. Save this setting. 
-![---](https://imgur.com/0shl20T.jpg) 
+To resolve this, we need to configure the shared disk in Azure to enable accessibility for other machines. Ensure all machines connected to the data disk are powered off, select ‘Yes’, and save the settings.
 
-![it worked!](https://imgur.com/zKYEY4w.jpg) 
+![dd config](https://imgur.com/0shl20T.jpg) 
 
-## Conclusion
-In this project, I was able to successfully configure and complete a full cloud-native backup service and machine restore to 100% data availability in Azure. Both methods prove to be powerful on-premises data protection solutions, useful in events of service disruptions, accidental deletions or corruption of data. It's equally secure, scalable, and cost-effective as it is simple to architect, highly available, and resilient.
+We now have full access to the shared data disk on our second machine.
+
+![success!](https://imgur.com/zKYEY4w.jpg) 
+
+## Conclusion 
+In this project, we successfully configured and provisioned access for a shared data disk. We faced a challenge with viewing folders and files on the provisioned disk, but after adjusting the configuration settings, we were able to access the shared data disk's contents. In conclusion, the configuration and provisioning of Azure shared data disks significantly enhance the efficiency and scalability of cloud-based applications. By allowing multiple virtual machines to access the same disk simultaneously, these shared disks provide a robust solution for high-availability environments and clustered applications. This project demonstrates the practical steps to set up and manage shared data disks, highlighting their benefits in terms of cost-effectiveness, resource optimization, and seamless data sharing. As organizations continue to leverage cloud technologies, Azure shared data disks will play a crucial role in supporting dynamic and resilient IT infrastructures.
 
 ## fin
