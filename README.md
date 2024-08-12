@@ -1,4 +1,4 @@
-# Data Disk Configuration & Provisioning
+# Azure Shared Data Disks: Configuration, Provisioning, and Application
 
 ![VMs](https://imgur.com/PSLEQ0j.png)
 
